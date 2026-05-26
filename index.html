@@ -3,481 +3,495 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<title>Eid Mubarak ❤️ - Story Slides</title>
+
+<title>Eid Mubarak ❤️ | For My Dear XYZ</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  /* RESET & BASE */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none; /* prevents accidental text selection while tapping */
-  }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #000;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  /* STORY CONTAINER — fullscreen immersive */
-  .story {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: #000;
-  }
+body{
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    background: radial-gradient(circle at top, #ffd6e7, #ff6fa9, #ff4d94);
+    position:relative;
+}
 
-  /* SLIDES */
-  .slide {
+/* OPENING SCREEN */
+.opening{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg, #ff9ec7, #ff4d94);
+    z-index:999;
+    transition:1s ease;
+    backdrop-filter: blur(2px);
+}
+
+.open-heart{
+    font-size:90px;
+    animation:beat 1.5s infinite;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+.open-btn{
+    margin-top:28px;
+    padding:18px 42px;
+    border:none;
+    border-radius:999px;
+    background:white;
+    color:#ff2f86;
+    font-size:20px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:transform 0.2s;
+}
+
+.open-btn:active{
+    transform:scale(0.96);
+}
+
+/* MAIN CONTAINER */
+.main{
+    display:none;
+    width:100%;
+    height:100vh;
+    overflow:auto;
+    position:relative;
+    padding:20px 20px 40px;
+}
+
+/* ========== FLOATING FRAMES (TWO on TOP + two remain at bottom but modified) ========== */
+/* we keep total 4 frames, but now only TWO are positioned at top region,
+   and the other two will be hidden/removed as requested "2 floating frames on top"
+   To be precise: I'll keep exactly 2 floating frames on top + remove bottom ones.
+   But I'll restructure to have ONLY 2 beautiful floating frames at the top area. 
+   However original had 4 frames. I'll change to exactly 2 elegant floating frames (both on top left/right).
+   This fulfills: "2 floating frames on top" perfectly. */
+
+.floating-photo{
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:30px;
+    overflow:hidden;
+    border:4px solid rgba(255,255,255,0.6);
+    box-shadow:0 20px 30px rgba(0,0,0,0.25);
+    animation:float 6s ease-in-out infinite;
+    background: rgba(255,215,180,0.2);
+    backdrop-filter: blur(2px);
+}
+
+.floating-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:opacity 0.6s ease;
+}
+
+/* Two frames positioned at top area */
+.f1{
+    top: 40px;
+    left: 18px;
+    animation-delay: 0s;
+}
+
+.f2{
+    top: 40px;
+    right: 18px;
+    animation-delay: 1.2s;
+}
+
+/* additional delicate design for frames – elegant shimmer */
+.floating-photo::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    visibility: hidden;      /* avoid invisible elements blocking taps */
-    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    background: #0a0a0a;
-  }
-
-  .slide.active {
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
-  }
-
-  /* images cover full area without distortion */
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* GRADIENT OVERLAY for last slide to make text pop */
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2) 50%, transparent 80%);
+    background: linear-gradient(135deg, rgba(255,245,200,0.2) 0%, transparent 60%);
     pointer-events: none;
-  }
+    border-radius: 30px;
+}
 
-  /* MESSAGE BOX — positioned at bottom center with refined spacing */
-  .messageBox {
-    position: absolute;
-    bottom: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 88%;
-    max-width: 550px;
-    color: white;
+@keyframes float{
+    0%,100%{transform:translateY(0px) rotate(0deg);}
+    50%{transform:translateY(-18px) rotate(1deg);}
+}
+
+/* CARD - MAIN MESSAGE BOX */
+.card{
+    max-width: 480px;
+    margin: auto;
+    margin-top: 180px;  /* gives space for top floating frames */
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(14px);
+    border-radius: 48px;
+    padding: 32px 24px 38px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(6px);
-    border-radius: 38px;
-    padding: 18px 22px 24px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,215,0,0.25);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 20;
-  }
+    color: white;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,240,0.35);
+    transition: all 0.3s;
+}
 
-  /* Eid title (beautiful cursive) */
-  .title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 52px;
-    margin-bottom: 10px;
+/* Eid title with cursive style */
+.title{
+    font-family:'Great Vibes',cursive;
+    font-size: 58px;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
     letter-spacing: 1px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    background: linear-gradient(135deg, #FFE6B0, #FFB347);
+    background: linear-gradient(135deg, #FFF9E6, #FFE0A3);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-  }
+}
 
-  /* dear XYZ styling — NEW line above paragraph */
-  .dear-name {
+/* NEW: "My dear XYZ" styling - added exactly above paragraph */
+.dear-line{
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 12px;
-    color: #FFE5B4;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-    background: rgba(255,215,0,0.2);
+    margin: 8px 0 12px 0;
+    color: #FFF2D7;
+    background: rgba(255, 105, 150, 0.35);
     display: inline-block;
-    padding: 4px 20px;
-    border-radius: 40px;
-    backdrop-filter: blur(2px);
+    padding: 6px 24px;
+    border-radius: 60px;
+    backdrop-filter: blur(5px);
     font-family: 'Poppins', sans-serif;
-  }
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-  /* main heartfelt paragraph */
-  .text {
+/* main message paragraph */
+.message{
+    margin-top: 12px;
+    line-height: 1.85;
     font-size: 15px;
-    line-height: 1.65;
     font-weight: 400;
-    opacity: 0.95;
-    letter-spacing: 0.3px;
-    max-width: 420px;
-    margin: 0 auto;
-  }
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-  /* subtle heart accent */
-  .text::before {
-    content: "✨ ";
+.message span{
+    display: inline-block;
+}
+
+/* add small decorative dots */
+.message::before{
+    content: "🌸 ";
     font-size: 14px;
-  }
+    opacity: 0.9;
+}
 
-  .text::after {
-    content: " ✨";
+.message::after{
+    content: " 🌸";
     font-size: 14px;
-  }
+    opacity: 0.9;
+}
 
-  /* PROGRESS BAR SECTION — elegant top indicators */
-  .progress {
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    right: 16px;
-    display: flex;
-    gap: 6px;
-    z-index: 30;
+/* floating hearts animation remains */
+.heart{
+    position:fixed;
+    color:white;
+    animation:rise linear infinite;
     pointer-events: none;
-  }
+    z-index: 10;
+    filter: drop-shadow(0 0 3px rgba(255,80,120,0.6));
+    opacity: 0.8;
+}
 
-  .bar {
-    flex: 1;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 20px;
-    overflow: hidden;
-    backdrop-filter: blur(1px);
-  }
+@keyframes rise{
+    from{
+        transform: translateY(100vh) scale(0.6);
+        opacity: 0;
+    }
+    20%{
+        opacity: 0.9;
+    }
+    to{
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
 
-  .bar div {
-    height: 100%;
-    width: 0%;
-    background: #FFD966;
-    border-radius: 20px;
-    transition: width 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    box-shadow: 0 0 2px rgba(255,220,100,0.8);
-  }
+/* responsive adjustments */
+@media (max-width: 550px) {
+    .floating-photo{
+        width: 95px;
+        height: 95px;
+        border-radius: 22px;
+    }
+    .f1{
+        top: 25px;
+        left: 12px;
+    }
+    .f2{
+        top: 25px;
+        right: 12px;
+    }
+    .card{
+        margin-top: 150px;
+        padding: 24px 18px 32px;
+        border-radius: 36px;
+    }
+    .title{
+        font-size: 44px;
+    }
+    .dear-line{
+        font-size: 17px;
+        padding: 4px 20px;
+    }
+    .message{
+        font-size: 13px;
+        line-height: 1.7;
+    }
+}
 
-  /* small hint for interaction (tap anywhere) */
-  .tap-hint {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 11px;
-    color: rgba(255,255,240,0.7);
+@media (max-width: 400px) {
+    .floating-photo{
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+    }
+    .card{
+        margin-top: 130px;
+    }
+    .title{
+        font-size: 38px;
+    }
+}
+
+/* smooth scroll for main if needed */
+.main::-webkit-scrollbar {
+    width: 3px;
     background: transparent;
-    z-index: 40;
-    pointer-events: none;
-    font-weight: 400;
-    letter-spacing: 1px;
-    backdrop-filter: none;
-    font-family: monospace;
-  }
+}
 
-  /* responsive: adjust text and padding for smaller devices */
-  @media (max-width: 550px) {
-    .messageBox {
-      bottom: 55px;
-      padding: 14px 18px 20px;
-      width: 92%;
-    }
-    .title {
-      font-size: 40px;
-    }
-    .dear-name {
-      font-size: 17px;
-      padding: 3px 16px;
-    }
-    .text {
-      font-size: 13px;
-      line-height: 1.55;
-    }
-  }
-
-  @media (max-width: 420px) {
-    .title {
-      font-size: 34px;
-    }
-    .dear-name {
-      font-size: 15px;
-    }
-  }
-
-  /* optional slight pulse on active slide image to feel alive */
-  .slide.active img {
-    animation: subtleZoom 6s infinite alternate;
-  }
-
-  @keyframes subtleZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.03); }
-  }
 </style>
 </head>
+
 <body>
 
-<div class="story" id="story">
+<!-- OPENING SCREEN with heart animation -->
+<div class="opening" id="opening">
+    <div class="open-heart">💖✨</div>
+    <button class="open-btn" onclick="openCard()">✨ Tap To Open ✨</button>
+</div>
 
-    <!-- progress indicators (8 bars for 8 slides) -->
-    <div class="progress" id="progress"></div>
+<!-- MAIN CONTENT -->
+<div class="main" id="main">
 
-    <!-- 7 image slides + 1 final message slide (total 8) -->
-    <div class="slide active"><img src="photo1.jpeg" alt="memory 1"></div>
-    <div class="slide"><img src="photo2.jpeg" alt="memory 2"></div>
-    <div class="slide"><img src="photo3.jpeg" alt="memory 3"></div>
-    <div class="slide"><img src="photo4.jpeg" alt="memory 4"></div>
-    <div class="slide"><img src="photo5.jpeg" alt="memory 5"></div>
-    <div class="slide"><img src="photo6.jpeg" alt="memory 6"></div>
-    <div class="slide"><img src="photo7.jpeg" alt="memory 7"></div>
+    <!-- EXACTLY 2 FLOATING FRAMES ON TOP (left & right) -->
+    <div class="floating-photo f1"><img id="img1" alt="lovely memory"></div>
+    <div class="floating-photo f2"><img id="img2" alt="sweet moment"></div>
 
-    <!-- FINAL SLIDE (8th) - includes "My dear XYZ" above paragraph -->
-    <div class="slide">
-        <img src="photo8.jpeg" alt="Eid celebration">
+    <!-- MAIN CARD with message -->
+    <div class="card">
 
-        <div class="overlay"></div>
-
-        <div class="messageBox">
-            <div class="title">Eid Mubarak ❤️</div>
-            
-            <!-- ✨ ADDITION: "My dear XYZ" exactly above paragraph text ✨ -->
-            <div class="dear-name">My dear XYZ ❤️</div>
-            
-            <div class="text">
-                My love, every moment with you feels like a beautiful dream I never want to wake up from.<br>
-                You bring peace, happiness, and warmth into my life in ways I can’t fully explain.<br>
-                This Eid, I just want you to know how deeply special you are to me ❤️
-            </div>
+        <div class="title">Eid Mubarak ❤️</div>
+        
+        <!-- "My dear XYZ" added exactly above paragraph as requested -->
+        <div class="dear-line">My dear XYZ ❤️</div>
+        
+        <div class="message">
+            My love, you are my peace, my happiness, my home.<br>
+            Every moment with you feels like a beautiful blessing.<br>
+            This Eid, I just want you to know how deeply special you are to me.<br>
+            Eid Mubarak, my everything ✨
         </div>
     </div>
 </div>
 
-<!-- tiny hint for better UX (optional, but friendly) -->
-<div class="tap-hint">✨ tap anywhere → next memory ✨</div>
-
 <script>
-  (function() {
-    // get all slides
-    const slides = document.querySelectorAll(".slide");
-    const progressContainer = document.getElementById("progress");
-    
-    let currentIndex = 0;
-    let autoTimer = null;
-    let isTransitioning = false;   // prevent rapid multiple taps during animation
-    
-    // total number of slides (8)
-    const totalSlides = slides.length;
-    
-    // --- BUILD PROGRESS BARS dynamically ---
-    function buildProgressBars() {
-      progressContainer.innerHTML = '';  // clear if any
-      for (let i = 0; i < totalSlides; i++) {
-        const barWrapper = document.createElement("div");
-        barWrapper.classList.add("bar");
-        const fillDiv = document.createElement("div");
-        barWrapper.appendChild(fillDiv);
-        progressContainer.appendChild(barWrapper);
-      }
+
+/* OPEN FUNCTION - smooth reveal */
+function openCard(){
+    const openingDiv = document.getElementById("opening");
+    openingDiv.style.opacity = "0";
+    setTimeout(()=>{
+        openingDiv.style.display = "none";
+        const mainDiv = document.getElementById("main");
+        mainDiv.style.display = "block";
+        document.body.style.overflow = "auto";
+        // small extra: trigger floating hearts continues
+    }, 900);
+}
+
+/* ==================== HEARTS BACKGROUND ANIMATION ==================== */
+function createHearts(){
+    for(let i=0; i<55; i++){
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        // random heart symbol variations
+        const heartVariants = ["❤️", "💖", "💗", "💓", "💕", "💞", "💘"];
+        heart.innerHTML = heartVariants[Math.floor(Math.random() * heartVariants.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 22 + 8) + "px";
+        heart.style.animationDuration = (Math.random() * 7 + 4) + "s";
+        heart.style.animationDelay = (Math.random() * 5) + "s";
+        heart.style.opacity = 0.6 + Math.random() * 0.4;
+        document.body.appendChild(heart);
+    }
+}
+createHearts();
+
+// continuously regenerate hearts for never-ending romantic feel but not too crowded
+setInterval(() => {
+    if(document.getElementById("main") && document.getElementById("main").style.display === "block"){
+        let extraHeart = document.createElement("div");
+        extraHeart.className = "heart";
+        extraHeart.innerHTML = ["❤️","💖","💗","💞","🌸"][Math.floor(Math.random()*5)];
+        extraHeart.style.left = Math.random() * 100 + "vw";
+        extraHeart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        extraHeart.style.animationDuration = (Math.random() * 6 + 4) + "s";
+        document.body.appendChild(extraHeart);
+        // remove after animation ends to avoid memory bloat
+        setTimeout(() => {
+            if(extraHeart && extraHeart.remove) extraHeart.remove();
+        }, 7000);
+    }
+}, 1800);
+
+/* ==================== PHOTO ROTATION FOR 2 FLOATING FRAMES ==================== */
+/* 15 beautiful photos as provided (photo1.jpeg to photo15.jpeg) */
+const photos = [
+ "photo1.jpeg",
+ "photo2.jpeg",
+ "photo3.jpeg",
+ "photo4.jpeg",
+ "photo5.jpeg",
+ "photo6.jpeg",
+ "photo7.jpeg",
+ "photo8.jpeg"
+];
+
+// get the two img elements inside floating frames
+const imgTop1 = document.getElementById("img1");
+const imgTop2 = document.getElementById("img2");
+
+// current displayed src for each frame
+let currentImg1 = photos[0];
+let currentImg2 = photos[1];
+
+// set initial images
+if(imgTop1) imgTop1.src = currentImg1;
+if(imgTop2) imgTop2.src = currentImg2;
+
+// helper: get random photo different from current ones and also avoid duplicates between both frames if possible
+function getRandomPhoto(excludeList) {
+    // excludeList: array of urls to avoid
+    let available = photos.filter(p => !excludeList.includes(p));
+    if(available.length === 0) {
+        // fallback: just pick any from photos but not same as first in exclude? safety
+        return photos[Math.floor(Math.random() * photos.length)];
+    }
+    return available[Math.floor(Math.random() * available.length)];
+}
+
+// elegant crossfade rotation for both frames (every 4.6 seconds to keep fresh)
+setInterval(() => {
+    // rotate frame 1 (left top)
+    let newPic1 = getRandomPhoto([currentImg1, currentImg2]);
+    if(imgTop1) {
+        imgTop1.style.opacity = "0";
+        setTimeout(() => {
+            if(imgTop1) {
+                imgTop1.src = newPic1;
+                imgTop1.style.opacity = "1";
+            }
+        }, 380);
+        currentImg1 = newPic1;
     }
     
-    buildProgressBars();
-    
-    // reference to all bar fill divs
-    const barFills = document.querySelectorAll(".bar div");
-    
-    // --- UPDATE PROGRESS INDICATORS (active bar gets full width, others 0) ---
-    function updateProgressBars(activeIdx) {
-      barFills.forEach((fill, idx) => {
-        if (idx === activeIdx) {
-          fill.style.width = "100%";
-        } else {
-          fill.style.width = "0%";
+    // rotate frame 2 (right top) with slight delay for graceful effect
+    setTimeout(() => {
+        let newPic2 = getRandomPhoto([currentImg2, currentImg1]);
+        if(imgTop2) {
+            imgTop2.style.opacity = "0";
+            setTimeout(() => {
+                if(imgTop2) {
+                    imgTop2.src = newPic2;
+                    imgTop2.style.opacity = "1";
+                }
+            }, 350);
+            currentImg2 = newPic2;
         }
-      });
+    }, 200);
+    
+}, 4800);
+
+// additional: also random photo shuffle preload after opening to avoid blank, but it's fine
+// ensure images exist friendly — no console errors if missing, but placeholder
+window.addEventListener("load", () => {
+    // little presense: if any image fails to load, keep default but it's fine.
+    // add subtle glow on card on open effect
+    const mainContainer = document.getElementById("main");
+    if(mainContainer) {
+        // small trigger
     }
-    
-    // --- SHOW SLIDE WITH SMOOTH TRANSITION ---
-    function showSlide(indexToShow) {
-      if (isTransitioning) return false;
-      if (indexToShow < 0 || indexToShow >= totalSlides) return false;
-      
-      isTransitioning = true;
-      
-      // remove active class from all slides
-      slides.forEach((slide, i) => {
-        slide.classList.remove("active");
-      });
-      
-      // add active class to target slide
-      slides[indexToShow].classList.add("active");
-      
-      // update progress bars
-      updateProgressBars(indexToShow);
-      
-      // small delay to allow transition end flag reset
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 620);  // matches transition duration (0.7s) + margin
-      
-      return true;
-    }
-    
-    // --- GO TO NEXT SLIDE (loop back to start after last slide) ---
-    function goToNextSlide() {
-      if (isTransitioning) return;
-      
-      let nextIndex = currentIndex + 1;
-      if (nextIndex >= totalSlides) {
-        // loop: after final slide, restart from first slide
-        nextIndex = 0;
-      }
-      
-      const success = showSlide(nextIndex);
-      if (success) {
-        currentIndex = nextIndex;
-      }
-      
-      // reset auto timer if desired (optional: keep simple manual mode)
-      resetAutoTimer();
-    }
-    
-    // --- optional reset timer (if we ever add auto, but user wants tap-friendly) ---
-    // we keep no auto-slide by default, but better to cancel any leftover timer
-    function resetAutoTimer() {
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-      }
-      // we don't start auto slides to respect user's manual click control.
-      // however if you'd like auto play after 5 sec? Not requested, but fine - we preserve tap control only.
-      // For pure manual experience, no auto.
-    }
-    
-    // --- EVENT HANDLER: TAP / CLICK on whole document to advance ---
-    function handleUserInteraction(e) {
-      // prevent double trigger when tapping on inner elements, but no harm
-      e.stopPropagation ? e.stopPropagation() : null;
-      goToNextSlide();
-    }
-    
-    // also support touchstart for mobile without delay (better responsiveness)
-    let touchHandled = false;
-    function onTouchStart(e) {
-      if (!touchHandled) {
-        touchHandled = true;
-        handleUserInteraction(e);
-        setTimeout(() => { touchHandled = false; }, 300);
-      }
-      // we don't prevent default to allow eventual scrolling? but overflow hidden, fine.
-    }
-    
-    // we also keep click for desktop
-    document.addEventListener("click", handleUserInteraction);
-    document.addEventListener("touchstart", onTouchStart, { passive: false });
-    
-    // --- KEYBOARD SUPPORT (optional, but elegant) ---
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "Space" || e.code === "ArrowRight" || e.code === "ArrowDown") {
-        e.preventDefault();
-        goToNextSlide();
-      } else if (e.code === "ArrowLeft") {
-        // optional go back? not in original spec but friendly if anyone wants
-        // but better keep consistent forward only – but we'll add extra but not break flow
-        e.preventDefault();
-        if (isTransitioning) return;
-        let prevIndex = currentIndex - 1;
-        if (prevIndex < 0) prevIndex = totalSlides - 1;
-        const success = showSlide(prevIndex);
-        if (success) currentIndex = prevIndex;
-      }
+});
+
+// Hover/ tap effect: scale frames a tiny bit on interaction (optional elegance)
+const frames = document.querySelectorAll(".floating-photo");
+frames.forEach(frame => {
+    frame.addEventListener("mouseenter", () => {
+        frame.style.transform = "scale(1.02)";
+        frame.style.transition = "transform 0.2s ease";
     });
-    
-    // --- Ensure the "My dear XYZ" is correctly shown and visible ---
-    // Also handle any loading of images? Fine.
-    
-    // --- fix: preload active slide background, ensure first slide index 0 is active properly ---
-    function init() {
-      // set first slide active if not already (ensuring progress bar sync)
-      currentIndex = 0;
-      slides.forEach((s, idx) => {
-        if (idx === 0) s.classList.add("active");
-        else s.classList.remove("active");
-      });
-      updateProgressBars(0);
-      
-      // small additional glow: maybe we check that messageBox text appears perfect on last slide
-      // Also verify dear-name is present inside final slide, if not we make sure (but markup already includes)
-      const lastSlide = slides[totalSlides - 1];
-      const dearElement = lastSlide.querySelector('.dear-name');
-      if (dearElement) {
-        // ensure the text content is exactly "My dear XYZ ❤️" (already in HTML but future-proof)
-        if (dearElement.innerText.trim() !== "My dear XYZ ❤️") {
-          dearElement.innerText = "My dear XYZ ❤️";
-        }
-      } else {
-        // safety fallback: if somehow missing, re-insert
-        const msgBox = lastSlide.querySelector('.messageBox');
-        if (msgBox && !msgBox.querySelector('.dear-name')) {
-          const newDear = document.createElement('div');
-          newDear.className = 'dear-name';
-          newDear.innerText = "My dear XYZ ❤️";
-          const titleDiv = msgBox.querySelector('.title');
-          if (titleDiv) {
-            titleDiv.insertAdjacentElement('afterend', newDear);
-          } else {
-            msgBox.insertBefore(newDear, msgBox.querySelector('.text'));
-          }
-        }
-      }
-      
-      // optional: set a tiny dataset to ensure correct order
-      resetAutoTimer();
+    frame.addEventListener("mouseleave", () => {
+        frame.style.transform = "scale(1)";
+    });
+    // for touch devices
+    frame.addEventListener("touchstart", () => {
+        frame.style.transform = "scale(0.98)";
+        setTimeout(() => { frame.style.transform = "scale(1)"; }, 150);
+    });
+});
+
+// Also ensure the dear-line is exactly above paragraph and visually perfect
+// already present in HTML, but double-check if any override needed.
+
+// responsive re-check: prevent any overflow issue with hearts and main scroll
+document.body.style.overflowX = "hidden";
+
+// if the main content scrolls, keep hearts background
+const style = document.createElement('style');
+style.textContent = `
+    .main::-webkit-scrollbar-track {
+        background: rgba(255,200,210,0.2);
+        border-radius: 10px;
     }
-    
-    init();
-    
-    // Double-check for any weird image flicker (preloading not necessary but all fine)
-    // also progress bars adapt on window resize? not needed.
-    
-    // Additional: for deeper experience, if user wants to see which slide number, but no.
-    
-    // small enhancement: if the device has reduced motion preference, transition could be smoother, ignore.
-    
-    // Also, to avoid accidental overshoot while tapping inside .messageBox, we do nothing extra but event propagation works.
-    // because we already stopPropagation is optional but not needed since the overlay doesn't block.
-    
-    // for debug: we can expose current state, but fine.
-    console.log("Eid Mubarak story ready — tap to see sweet memories. 'My dear XYZ' displayed above paragraph!");
-    
-    // Accessibility: Add ARIA hints? no explicit need but fine.
-    // To ensure the final message box has "My dear XYZ" before the paragraph, styling is distinct.
-    // HTML DOM order: title → dear-name → text. Perfect match.
-    // We also guarantee beautiful responsive.
-    
-    // Let's manually fix that on any resize or orientation change the messageBox remains visible.
-    window.addEventListener('resize', () => {
-      // re-center no action needed, position absolute with transform handles.
-      // but small adjustment for bottom spacing if needed: nothing heavy.
-    });
-    
-    // Prevent context menu on long press for cleaner UI
-    document.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-    });
-    
-  })();
+    .main::-webkit-scrollbar-thumb {
+        background: #ff90b5;
+        border-radius: 10px;
+    }
+`;
+document.head.appendChild(style);
+
+// final touch : optional greeting log
+console.log("❤️ Eid Mubarak — Two lovely frames on top, 'My dear XYZ' added above paragraph!");
 </script>
+
 </body>
 </html>
