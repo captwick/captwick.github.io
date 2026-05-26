@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Eid Mubarak ❤️ | For My Dear XYZ</title>
+<title>Eid Mubarak ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -20,11 +20,11 @@ body{
     font-family:'Poppins',sans-serif;
     overflow:hidden;
     height:100vh;
-    background: radial-gradient(circle at top, #ffd6e7, #ff6fa9, #ff4d94);
-    position:relative;
+    background: radial-gradient(circle at top,#ffd6e7,#ff6fa9,#ff4d94);
 }
 
-/* OPENING SCREEN */
+/* OPENING */
+
 .opening{
     position:fixed;
     inset:0;
@@ -32,16 +32,14 @@ body{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    background:linear-gradient(135deg, #ff9ec7, #ff4d94);
+    background:linear-gradient(135deg,#ff9ec7,#ff4d94);
     z-index:999;
     transition:1s ease;
-    backdrop-filter: blur(2px);
 }
 
 .open-heart{
-    font-size:90px;
+    font-size:80px;
     animation:beat 1.5s infinite;
-    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
 }
 
 @keyframes beat{
@@ -50,8 +48,8 @@ body{
 }
 
 .open-btn{
-    margin-top:28px;
-    padding:18px 42px;
+    margin-top:20px;
+    padding:18px 35px;
     border:none;
     border-radius:999px;
     background:white;
@@ -59,233 +57,108 @@ body{
     font-size:20px;
     font-weight:600;
     cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-    transition:transform 0.2s;
 }
 
-.open-btn:active{
-    transform:scale(0.96);
-}
+/* MAIN */
 
-/* MAIN CONTAINER */
 .main{
     display:none;
     width:100%;
     height:100vh;
     overflow:auto;
     position:relative;
-    padding:20px 20px 40px;
+    padding:20px;
 }
 
-/* ========== FLOATING FRAMES (TWO on TOP + two remain at bottom but modified) ========== */
-/* we keep total 4 frames, but now only TWO are positioned at top region,
-   and the other two will be hidden/removed as requested "2 floating frames on top"
-   To be precise: I'll keep exactly 2 floating frames on top + remove bottom ones.
-   But I'll restructure to have ONLY 2 beautiful floating frames at the top area. 
-   However original had 4 frames. I'll change to exactly 2 elegant floating frames (both on top left/right).
-   This fulfills: "2 floating frames on top" perfectly. */
+/* FLOATING FRAMES - NOW ONLY 2 AT THE TOP */
 
 .floating-photo{
     position:absolute;
-    width:130px;
-    height:130px;
-    border-radius:30px;
+    width:120px;
+    height:120px;
+    border-radius:25px;
     overflow:hidden;
-    border:4px solid rgba(255,255,255,0.6);
-    box-shadow:0 20px 30px rgba(0,0,0,0.25);
+    border:4px solid rgba(255,255,255,0.4);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
     animation:float 6s ease-in-out infinite;
-    background: rgba(255,215,180,0.2);
-    backdrop-filter: blur(2px);
 }
 
 .floating-photo img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:opacity 0.6s ease;
+    transition:opacity 0.8s ease;
 }
 
-/* Two frames positioned at top area */
+/* Only TWO frames - both positioned at the top */
 .f1{
-    top: 40px;
-    left: 18px;
-    animation-delay: 0s;
+    top:80px;
+    left:10px;
+    animation-delay:0s;
 }
 
 .f2{
-    top: 40px;
-    right: 18px;
-    animation-delay: 1.2s;
-}
-
-/* additional delicate design for frames – elegant shimmer */
-.floating-photo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255,245,200,0.2) 0%, transparent 60%);
-    pointer-events: none;
-    border-radius: 30px;
+    top:80px;
+    right:10px;
+    animation-delay:1s;
 }
 
 @keyframes float{
-    0%,100%{transform:translateY(0px) rotate(0deg);}
-    50%{transform:translateY(-18px) rotate(1deg);}
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
 }
 
-/* CARD - MAIN MESSAGE BOX */
+/* CARD - adjusted margin-top to accommodate frames nicely */
 .card{
-    max-width: 480px;
-    margin: auto;
-    margin-top: 180px;  /* gives space for top floating frames */
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(14px);
-    border-radius: 48px;
-    padding: 32px 24px 38px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
-    border: 1px solid rgba(255,255,240,0.35);
-    transition: all 0.3s;
+    max-width:420px;
+    margin:auto;
+    margin-top:170px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    padding:25px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
 }
 
-/* Eid title with cursive style */
 .title{
     font-family:'Great Vibes',cursive;
-    font-size: 58px;
-    margin-bottom: 12px;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #FFF9E6, #FFE0A3);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size:60px;
 }
 
-/* NEW: "My dear XYZ" styling - added exactly above paragraph */
-.dear-line{
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin: 8px 0 12px 0;
-    color: #FFF2D7;
-    background: rgba(255, 105, 150, 0.35);
-    display: inline-block;
-    padding: 6px 24px;
-    border-radius: 60px;
-    backdrop-filter: blur(5px);
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* NEW STYLE FOR "My dear XYZ" - added above paragraph */
+.dear-name{
+    font-size:18px;
+    font-weight:600;
+    margin-top:10px;
+    margin-bottom:5px;
+    color:#FFF5E0;
+    letter-spacing:1px;
+    background:rgba(255,255,255,0.15);
+    display:inline-block;
+    padding:5px 20px;
+    border-radius:40px;
+    backdrop-filter:blur(4px);
 }
 
-/* main message paragraph */
 .message{
-    margin-top: 12px;
-    line-height: 1.85;
-    font-size: 15px;
-    font-weight: 400;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    max-width: 380px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top:15px;
+    line-height:2;
+    font-size:14px;
 }
 
-.message span{
-    display: inline-block;
-}
+/* HEARTS */
 
-/* add small decorative dots */
-.message::before{
-    content: "🌸 ";
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-.message::after{
-    content: " 🌸";
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-/* floating hearts animation remains */
 .heart{
     position:fixed;
     color:white;
     animation:rise linear infinite;
-    pointer-events: none;
-    z-index: 10;
-    filter: drop-shadow(0 0 3px rgba(255,80,120,0.6));
-    opacity: 0.8;
 }
 
 @keyframes rise{
-    from{
-        transform: translateY(100vh) scale(0.6);
-        opacity: 0;
-    }
-    20%{
-        opacity: 0.9;
-    }
-    to{
-        transform: translateY(-100px) scale(1.2);
-        opacity: 0;
-    }
-}
-
-/* responsive adjustments */
-@media (max-width: 550px) {
-    .floating-photo{
-        width: 95px;
-        height: 95px;
-        border-radius: 22px;
-    }
-    .f1{
-        top: 25px;
-        left: 12px;
-    }
-    .f2{
-        top: 25px;
-        right: 12px;
-    }
-    .card{
-        margin-top: 150px;
-        padding: 24px 18px 32px;
-        border-radius: 36px;
-    }
-    .title{
-        font-size: 44px;
-    }
-    .dear-line{
-        font-size: 17px;
-        padding: 4px 20px;
-    }
-    .message{
-        font-size: 13px;
-        line-height: 1.7;
-    }
-}
-
-@media (max-width: 400px) {
-    .floating-photo{
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-    }
-    .card{
-        margin-top: 130px;
-    }
-    .title{
-        font-size: 38px;
-    }
-}
-
-/* smooth scroll for main if needed */
-.main::-webkit-scrollbar {
-    width: 3px;
-    background: transparent;
+    from{transform:translateY(100vh);opacity:0;}
+    to{transform:translateY(-100px);opacity:1;}
 }
 
 </style>
@@ -293,88 +166,68 @@ body{
 
 <body>
 
-<!-- OPENING SCREEN with heart animation -->
+<!-- OPENING -->
+
 <div class="opening" id="opening">
-    <div class="open-heart">💖✨</div>
-    <button class="open-btn" onclick="openCard()">✨ Tap To Open ✨</button>
+    <div class="open-heart">💖</div>
+    <button class="open-btn" onclick="openCard()">Tap To Open ✨</button>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
+
 <div class="main" id="main">
 
-    <!-- EXACTLY 2 FLOATING FRAMES ON TOP (left & right) -->
-    <div class="floating-photo f1"><img id="img1" alt="lovely memory"></div>
-    <div class="floating-photo f2"><img id="img2" alt="sweet moment"></div>
+    <!-- ONLY 2 FLOATING FRAMES AT THE TOP -->
+    <div class="floating-photo f1"><img id="img1"></div>
+    <div class="floating-photo f2"><img id="img2"></div>
 
-    <!-- MAIN CARD with message -->
+    <!-- CARD -->
+
     <div class="card">
 
         <div class="title">Eid Mubarak ❤️</div>
-        
-        <!-- "My dear XYZ" added exactly above paragraph as requested -->
-        <div class="dear-line">My dear XYZ ❤️</div>
-        
+
+        <!-- "My dear XYZ" added right here above the paragraph -->
+        <div class="dear-name">My dear XYZ ❤️</div>
+
         <div class="message">
-            My love, you are my peace, my happiness, my home.<br>
-            Every moment with you feels like a beautiful blessing.<br>
-            This Eid, I just want you to know how deeply special you are to me.<br>
-            Eid Mubarak, my everything ✨
+            My love,<br><br>
+            You are my peace, my happiness, my home.<br>
+            Every moment with you feels like a blessing.<br><br>
+            Eid Mubarak ✨
         </div>
+
     </div>
+
 </div>
 
 <script>
 
-/* OPEN FUNCTION - smooth reveal */
+/* OPEN */
+
 function openCard(){
-    const openingDiv = document.getElementById("opening");
-    openingDiv.style.opacity = "0";
+    document.getElementById("opening").style.opacity="0";
     setTimeout(()=>{
-        openingDiv.style.display = "none";
-        const mainDiv = document.getElementById("main");
-        mainDiv.style.display = "block";
-        document.body.style.overflow = "auto";
-        // small extra: trigger floating hearts continues
-    }, 900);
+        document.getElementById("opening").style.display="none";
+        document.getElementById("main").style.display="block";
+        document.body.style.overflow="auto";
+    },900);
 }
 
-/* ==================== HEARTS BACKGROUND ANIMATION ==================== */
-function createHearts(){
-    for(let i=0; i<55; i++){
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        // random heart symbol variations
-        const heartVariants = ["❤️", "💖", "💗", "💓", "💕", "💞", "💘"];
-        heart.innerHTML = heartVariants[Math.floor(Math.random() * heartVariants.length)];
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (Math.random() * 22 + 8) + "px";
-        heart.style.animationDuration = (Math.random() * 7 + 4) + "s";
-        heart.style.animationDelay = (Math.random() * 5) + "s";
-        heart.style.opacity = 0.6 + Math.random() * 0.4;
-        document.body.appendChild(heart);
-    }
+/* HEARTS */
+
+for(let i=0;i<40;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*18+10)+"px";
+    h.style.animationDuration=(Math.random()*6+4)+"s";
+    document.body.appendChild(h);
 }
-createHearts();
 
-// continuously regenerate hearts for never-ending romantic feel but not too crowded
-setInterval(() => {
-    if(document.getElementById("main") && document.getElementById("main").style.display === "block"){
-        let extraHeart = document.createElement("div");
-        extraHeart.className = "heart";
-        extraHeart.innerHTML = ["❤️","💖","💗","💞","🌸"][Math.floor(Math.random()*5)];
-        extraHeart.style.left = Math.random() * 100 + "vw";
-        extraHeart.style.fontSize = (Math.random() * 20 + 10) + "px";
-        extraHeart.style.animationDuration = (Math.random() * 6 + 4) + "s";
-        document.body.appendChild(extraHeart);
-        // remove after animation ends to avoid memory bloat
-        setTimeout(() => {
-            if(extraHeart && extraHeart.remove) extraHeart.remove();
-        }, 7000);
-    }
-}, 1800);
+/* 15 PHOTOS */
 
-/* ==================== PHOTO ROTATION FOR 2 FLOATING FRAMES ==================== */
-/* 15 beautiful photos as provided (photo1.jpeg to photo15.jpeg) */
 const photos = [
  "photo1.jpeg",
  "photo2.jpeg",
@@ -386,111 +239,44 @@ const photos = [
  "photo8.jpeg"
 ];
 
-// get the two img elements inside floating frames
-const imgTop1 = document.getElementById("img1");
-const imgTop2 = document.getElementById("img2");
+// Only TWO frames now (f1 and f2 at the top)
+const frames = [
+ document.getElementById("img1"),
+ document.getElementById("img2")
+];
 
-// current displayed src for each frame
-let currentImg1 = photos[0];
-let currentImg2 = photos[1];
+let current = [];
 
-// set initial images
-if(imgTop1) imgTop1.src = currentImg1;
-if(imgTop2) imgTop2.src = currentImg2;
-
-// helper: get random photo different from current ones and also avoid duplicates between both frames if possible
-function getRandomPhoto(excludeList) {
-    // excludeList: array of urls to avoid
-    let available = photos.filter(p => !excludeList.includes(p));
-    if(available.length === 0) {
-        // fallback: just pick any from photos but not same as first in exclude? safety
-        return photos[Math.floor(Math.random() * photos.length)];
+/* initial unique assignment */
+for(let i=0;i<frames.length;i++){
+    if(frames[i]){
+        frames[i].src = photos[i];
+        current[i] = photos[i];
     }
-    return available[Math.floor(Math.random() * available.length)];
 }
 
-// elegant crossfade rotation for both frames (every 4.6 seconds to keep fresh)
-setInterval(() => {
-    // rotate frame 1 (left top)
-    let newPic1 = getRandomPhoto([currentImg1, currentImg2]);
-    if(imgTop1) {
-        imgTop1.style.opacity = "0";
-        setTimeout(() => {
-            if(imgTop1) {
-                imgTop1.src = newPic1;
-                imgTop1.style.opacity = "1";
-            }
-        }, 380);
-        currentImg1 = newPic1;
-    }
-    
-    // rotate frame 2 (right top) with slight delay for graceful effect
-    setTimeout(() => {
-        let newPic2 = getRandomPhoto([currentImg2, currentImg1]);
-        if(imgTop2) {
-            imgTop2.style.opacity = "0";
-            setTimeout(() => {
-                if(imgTop2) {
-                    imgTop2.src = newPic2;
-                    imgTop2.style.opacity = "1";
-                }
-            }, 350);
-            currentImg2 = newPic2;
+/* random non-duplicate picker */
+function getRandom(exclude){
+    let available = photos.filter(p => !exclude.includes(p));
+    if(available.length === 0) return photos[0];
+    return available[Math.floor(Math.random()*available.length)];
+}
+
+/* rotate images in both floating frames */
+setInterval(()=>{
+    frames.forEach((img,i)=>{
+        if(img){
+            let newPic = getRandom(current);
+            current[i] = newPic;
+            img.style.opacity = 0;
+            setTimeout(()=>{
+                img.src = newPic;
+                img.style.opacity = 1;
+            },400);
         }
-    }, 200);
-    
-}, 4800);
-
-// additional: also random photo shuffle preload after opening to avoid blank, but it's fine
-// ensure images exist friendly — no console errors if missing, but placeholder
-window.addEventListener("load", () => {
-    // little presense: if any image fails to load, keep default but it's fine.
-    // add subtle glow on card on open effect
-    const mainContainer = document.getElementById("main");
-    if(mainContainer) {
-        // small trigger
-    }
-});
-
-// Hover/ tap effect: scale frames a tiny bit on interaction (optional elegance)
-const frames = document.querySelectorAll(".floating-photo");
-frames.forEach(frame => {
-    frame.addEventListener("mouseenter", () => {
-        frame.style.transform = "scale(1.02)";
-        frame.style.transition = "transform 0.2s ease";
     });
-    frame.addEventListener("mouseleave", () => {
-        frame.style.transform = "scale(1)";
-    });
-    // for touch devices
-    frame.addEventListener("touchstart", () => {
-        frame.style.transform = "scale(0.98)";
-        setTimeout(() => { frame.style.transform = "scale(1)"; }, 150);
-    });
-});
+},5000);
 
-// Also ensure the dear-line is exactly above paragraph and visually perfect
-// already present in HTML, but double-check if any override needed.
-
-// responsive re-check: prevent any overflow issue with hearts and main scroll
-document.body.style.overflowX = "hidden";
-
-// if the main content scrolls, keep hearts background
-const style = document.createElement('style');
-style.textContent = `
-    .main::-webkit-scrollbar-track {
-        background: rgba(255,200,210,0.2);
-        border-radius: 10px;
-    }
-    .main::-webkit-scrollbar-thumb {
-        background: #ff90b5;
-        border-radius: 10px;
-    }
-`;
-document.head.appendChild(style);
-
-// final touch : optional greeting log
-console.log("❤️ Eid Mubarak — Two lovely frames on top, 'My dear XYZ' added above paragraph!");
 </script>
 
 </body>
