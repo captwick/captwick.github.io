@@ -243,7 +243,7 @@
     <div class="slide"><img src="photo6.jpeg" alt="memory 6"></div>
     <div class="slide"><img src="photo7.jpeg" alt="memory 7"></div>
 
-    <!-- FINAL SLIDE (8th) - includes "My dear XYZ" above paragraph -->
+    <!-- FINAL SLIDE (8th) - includes "Meri Pyari Si Farwa" above paragraph -->
     <div class="slide">
         <img src="photo8.jpeg" alt="Eid celebration">
 
@@ -405,7 +405,7 @@
       }
     });
     
-    // --- Ensure the "My dear XYZ" is correctly shown and visible ---
+    // --- Ensure the "Meri Pyari Si Farwa" is correctly shown and visible ---
     // Also handle any loading of images? Fine.
     
     // --- fix: preload active slide background, ensure first slide index 0 is active properly ---
@@ -423,9 +423,9 @@
       const lastSlide = slides[totalSlides - 1];
       const dearElement = lastSlide.querySelector('.dear-name');
       if (dearElement) {
-        // ensure the text content is exactly "My dear XYZ ❤️" (already in HTML but future-proof)
-        if (dearElement.innerText.trim() !== "My dear XYZ ❤️") {
-          dearElement.innerText = "My dear XYZ ❤️";
+        // ensure the text content is exactly "Meri Pyari Si Farwa ❤️" (already in HTML but future-proof)
+        if (dearElement.innerText.trim() !== "Meri Pyari Si Farwa ❤️") {
+          dearElement.innerText = "Meri Pyari Si Farwa ❤️";
         }
       } else {
         // safety fallback: if somehow missing, re-insert
@@ -433,7 +433,7 @@
         if (msgBox && !msgBox.querySelector('.dear-name')) {
           const newDear = document.createElement('div');
           newDear.className = 'dear-name';
-          newDear.innerText = "My dear XYZ ❤️";
+          newDear.innerText = "Meri Pyari Si Farwa ❤️";
           const titleDiv = msgBox.querySelector('.title');
           if (titleDiv) {
             titleDiv.insertAdjacentElement('afterend', newDear);
@@ -460,10 +460,10 @@
     // because we already stopPropagation is optional but not needed since the overlay doesn't block.
     
     // for debug: we can expose current state, but fine.
-    console.log("Eid Mubarak story ready — tap to see sweet memories. 'My dear XYZ' displayed above paragraph!");
+    console.log("Eid Mubarak story ready — tap to see sweet memories. 'Meri Pyari Si Farwa' displayed above paragraph!");
     
     // Accessibility: Add ARIA hints? no explicit need but fine.
-    // To ensure the final message box has "My dear XYZ" before the paragraph, styling is distinct.
+    // To ensure the final message box has "Meri Pyari Si Farwa" before the paragraph, styling is distinct.
     // HTML DOM order: title → dear-name → text. Perfect match.
     // We also guarantee beautiful responsive.
     
